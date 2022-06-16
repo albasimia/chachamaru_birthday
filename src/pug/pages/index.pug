@@ -6,18 +6,13 @@ block variables
   - var pageClass = 'index-page';
 
 block content
-  section
-    .container
-      +item('item title', 'item descr')
-      +item('item title', 'item descr')
-      +item('item title', 'item descr')
-  example-component
+  section.game
+    ul
+      - for (var x = 0; x < 16; x++)
+        li 
+          button.card(data-cardnum = x)
+    p.result スタート
+
 
 
 block script
-  script(type='text/javascript').
-    const foo = true;
-    let bar = function() {};
-    if (foo) {
-    bar(1 + 5)
-    }
