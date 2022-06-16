@@ -24,9 +24,10 @@ let isSelect = false;
 const cards = document.querySelectorAll('.card');
 const init = () => {
   game_card_data = shuffleArray(card_data);
+  // game_card_data = card_data;
   cards.forEach((card, key) => {
-    // card.dataset.cardnum = key;
-    card.innerText = game_card_data[key];
+    const open_img = card.childNodes.item(1);
+    open_img.setAttribute('src', `./assets/img/open.png`);
   })
 }
 let select_cards = null;
@@ -39,19 +40,19 @@ const openCard = (card) => {
       select_cards = card;
     } else {
       isSelect = true;
-      if (game_card_data[select_cards.dataset.cardnum] == game_card_data[card.dataset.cardnum]) {
-        result.innerText = '正解';
-        select_cards = null;
-        isSelect = false;
-      } else {
-        result.innerText = 'ちがうよ';
-        setTimeout(() => {
+      setTimeout(() => {
+        if (game_card_data[select_cards.dataset.cardnum] == game_card_data[card.dataset.cardnum]) {
+          result.innerText = '正解';
+          card.childNodes.item(1).setAttribute('src', `./assets/img/correct.png`);
+          select_cards.childNodes.item(1).setAttribute('src', `./assets/img/correct.png`);
+        } else {
+          result.innerText = 'ちがうよ';
           card.classList.remove('open');
           select_cards.classList.remove('open');
-          select_cards = null;
-          isSelect = false;
-        }, 1000)
-      }
+        }
+        select_cards = null;
+        isSelect = false;
+      }, 1000)
     }
   }
 }

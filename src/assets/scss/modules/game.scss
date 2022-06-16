@@ -12,9 +12,30 @@
   .card {
     width: 100%;
     padding-top: 100%;
-    background-color: red;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+    // overflow: hidden;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      &.close {
+        background-color: blue;
+      }
+      &.open {
+        background-color: red;
+        transform: rotateY(180deg);
+      }
+    }
     &.open {
-      background-color: blue;
+      pointer-events: none;
+      transform: rotateY(180deg);
     }
   }
   .result {
