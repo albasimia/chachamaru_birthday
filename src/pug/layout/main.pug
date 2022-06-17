@@ -7,6 +7,7 @@ html(lang='en')
     meta(charset='utf-8')
     title #{title}
     meta(name="description", content=description)
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no")
     block head
 
   body(class=pageClass)
@@ -15,6 +16,6 @@ html(lang='en')
         //- include ../includes/modules/header
         .content-wrapper
           block content
-        include ../includes/modules/footer
+        //- include ../includes/modules/footer
 
     block script

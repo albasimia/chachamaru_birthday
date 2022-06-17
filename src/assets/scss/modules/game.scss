@@ -1,13 +1,28 @@
+body {
+  // background-color: #2E2E2E;
+  background-color: #3c3c3c;
+}
 .game {
+  padding: 10px;
+  h1 {
+    text-align: center;
+    color: #fff;
+    @media screen and (min-width: $tableWidth) {
+      font-size: 2rem;
+    }
+    font-weight: bold;
+  }
   ul {
-    max-width: 500px;
+    @media screen and (min-width: $tableWidth) {
+      max-width: 500px;
+    }
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
   }
   li {
     flex-basis: 25%;
-    padding: 0 2px 2px 0;
+    padding: 0 4px 4px 0;
   }
   .card {
     width: 100%;
@@ -17,6 +32,8 @@
     transform-style: preserve-3d;
     transition: all 1s ease;
     // overflow: hidden;
+    background-color: transparent;
+    vertical-align: top;
     img {
       position: absolute;
       top: 0;
@@ -24,7 +41,9 @@
       width: 100%;
       height: auto;
       backface-visibility: hidden;
-      border-radius: 10%;
+      // border: rgba(#32fefe, 0.9) solid 1px;
+      // border-radius: 10%;
+      border-radius: 5%;
       &.close {
         background-color: blue;
       }
@@ -40,5 +59,6 @@
   }
   .result {
     text-align: center;
+    color: #fff;
   }
 }

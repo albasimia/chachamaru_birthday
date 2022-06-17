@@ -80,7 +80,7 @@ module.exports = {
         name: '[name].[ext]'
       }
     }, {
-      test: /\.(png|jpg|gif|svg)$/,
+      test: /\.(png|jpg|gif|svg|mp3)$/,
       loader: 'file-loader',
       options: {
         name: '[name].[ext]'
@@ -152,6 +152,10 @@ module.exports = {
       {
         from: `${PATHS.src}/${PATHS.assets}fonts`,
         to: `${PATHS.assets}fonts`
+      },
+      {
+        from: `${PATHS.src}/${PATHS.assets}sound`,
+        to: `${PATHS.assets}sound`
       },
       {
         from: `${PATHS.src}/static`,

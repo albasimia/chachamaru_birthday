@@ -1,3 +1,5 @@
+@import "../../../node_modules/reset.css/reset.css";
+
 @import "utils/libs";
 @import "utils/vars";
 @import "utils/mixins";
@@ -9,15 +11,16 @@ html {
 	font-size: $mainFontSize;
 	color: $mainFontColor;
   height: 100%;
-  @media screen and (max-width: $desktopWidth) {
-		font-size: 16px;
-  }
-  @media screen and (max-width: $tableWidth) {
-		font-size: 15px;
-  }
-  @media screen and (max-width: $phoneWidth) {
-		font-size: 14px;
-  }
+  font-size: 16px;
+  // @media screen and (max-width: $desktopWidth) {
+	// 	font-size: 16px;
+  // }
+  // @media screen and (max-width: $tableWidth) {
+	// 	font-size: 15px;
+  // }
+  // @media screen and (max-width: $phoneWidth) {
+	// 	font-size: 14px;
+  // }
 }
 
 body {
@@ -75,15 +78,15 @@ section, .section {
   position: relative;
   margin: 0 auto;
   max-width: $desktopWidth;
-  @media screen and (max-width: $smDesktopWidth) {
-    max-width: tableWidth;
-  }
-  @media screen and (max-width: $tableWidth) {
-    max-width: phoneWidth;
-  }
-  @media screen and (max-width: $phoneWidth) {
-    max-width: smPhoneWidth;
-  }
+  // @media screen and (max-width: $smDesktopWidth) {
+  //   max-width: tableWidth;
+  // }
+  // @media screen and (max-width: $tableWidth) {
+  //   max-width: phoneWidth;
+  // }
+  // @media screen and (max-width: $phoneWidth) {
+  //   max-width: smPhoneWidth;
+  // }
 }
 
 // Modules

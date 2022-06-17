@@ -1,10 +1,18 @@
 // JS
 import './js/'
+import {
+  Howl,
+  Howler
+} from 'howler'
 
 // SCSS
 import './assets/scss/main.scss'
 
 const card_data = ['watari', 'watari', 'taguchi', 'taguchi', 'ericia', 'ericia', 'rancia', 'rancia', 'chana', 'chana', 'makoto', 'makoto', 'taki', 'taki', 'makiko', 'makiko'];
+
+var watari_voice = new Howl({
+  src: ['./assets/sound/cha_watari_1.mp3']
+});
 
 const shuffleArray = (array) => {
   const cloneArray = [...array]
@@ -19,8 +27,8 @@ const shuffleArray = (array) => {
   return cloneArray
 }
 
-let game_card_data = [];
-let isSelect = false;
+let game_card_data = []
+let isSelect = false
 const cards = document.querySelectorAll('.card');
 const init = () => {
   game_card_data = shuffleArray(card_data);
@@ -33,6 +41,11 @@ const init = () => {
 let select_cards = null;
 const result = document.querySelector('.result');
 const openCard = (card) => {
+  card.addEventListener('transitionend', () => {
+    watari_voice.play();
+  }, {
+    once: true,
+  })
   if (!isSelect) {
     if (!card.classList.contains('open'))
       card.classList.add('open');
@@ -52,7 +65,7 @@ const openCard = (card) => {
         }
         select_cards = null;
         isSelect = false;
-      }, 1000)
+      }, 2000)
     }
   }
 }
