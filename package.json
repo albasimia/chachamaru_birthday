@@ -58,6 +58,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "howler": "^2.2.3",
     "reset.css": "^2.0.2",
     "vue": "^2.6.10"

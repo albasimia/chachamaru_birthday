@@ -14,7 +14,11 @@ block content
           button.card(data-cardnum = x)
             img.close(src="./assets/img/close_cha.jpg", alt="close")
             img.open(src="./assets/img/open.png", alt="open")
-    p.result スタート
+    .result
+      .correct.shadow.animate__bounceInDown
+        p.flash(data-text="セイカイ") セイカイ
+      .incorrect.shadow.animate__bounceInDown
+        p.flash(data-text="マチガイ") マチガイ
 
 
 
