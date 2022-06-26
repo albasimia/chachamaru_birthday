@@ -8,12 +8,13 @@ import {
 // SCSS
 import './assets/scss/main.scss'
 
-const card_data = ['watari', 'watari', 'taguchi', 'taguchi', 'ericia', 'ericia', 'rancia', 'rancia', 'chana', 'chana', 'makoto', 'makoto', 'taki', 'taki', 'makiko', 'makiko'];
+const card_data = ['watari', 'watari', 'taguchi', 'taguchi', 'tanikou', 'tanikou', 'rancia', 'rancia', 'chana', 'chana', 'makoto', 'makoto', 'taki', 'taki', 'makiko', 'makiko'];
 
+// voice
 const voices = [];
 voices.watari = new Howl({
   src: ['./assets/sound/watari.mp3'],
-  volume: 0.3,
+  volume: 0.4,
 });
 voices.taguchi = new Howl({
   src: ['./assets/sound/taguchi.mp3'],
@@ -21,8 +22,22 @@ voices.taguchi = new Howl({
 });
 voices.rancia = new Howl({
   src: ['./assets/sound/rancia.mp3'],
-  volume: 1.2,
+  volume: 1.0,
 });
+voices.taki = new Howl({
+  src: ['./assets/sound/taki.mp3'],
+  volume: 1.0,
+});
+voices.makoto = new Howl({
+  src: ['./assets/sound/makoto.mp3'],
+  volume: 0.8,
+});
+voices.makiko = new Howl({
+  src: ['./assets/sound/makiko.mp3'],
+  volume: 1.0,
+});
+
+// SE
 const correct_sound = new Howl({
   src: ['./assets/sound/correct.mp3'],
   volume: 1,
