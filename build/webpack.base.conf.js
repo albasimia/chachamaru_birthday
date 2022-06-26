@@ -23,6 +23,9 @@ const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.p
 
 module.exports = {
   // BASE config
+  devServer: {
+    host: '0.0.0.0',
+  },
   externals: {
     paths: PATHS
   },

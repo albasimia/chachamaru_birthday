@@ -6,20 +6,20 @@ block variables
   - var pageClass = 'index-page';
 
 block content
+  h1 茶々丸おねえさんボイス神経衰弱
+  p.description 音が出るよ。
   section.game
-    h1 茶々丸おねえさんボイス神経衰弱
     ul
       - for (var x = 0; x < 16; x++)
         li
           button.card(data-cardnum = x)
-            img.close(src="./assets/img/close_cha.jpg", alt="close")
-            img.open(src="./assets/img/open.png", alt="open")
+            img.close(src="./assets/img/close_cha.jpg", alt="close", width="500", height="500")
+            img.open(src="./assets/img/open.png", alt="open", width="500", height="500")
     .result
       .correct.shadow.animate__bounceInDown
         p.flash(data-text="セイカイ") セイカイ
       .incorrect.shadow.animate__bounceInDown
         p.flash(data-text="マチガイ") マチガイ
-
 
 
 block script
