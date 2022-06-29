@@ -70,13 +70,13 @@ const shuffleArray = (array) => {
 }
 
 let game_card_data = []
-let isSelect = false
+let is_select = false
 const cards = document.querySelectorAll('.card');
 const correct = document.querySelector('.correct');
 const incorrect = document.querySelector('.incorrect');
 const init = () => {
-  game_card_data = shuffleArray(card_data);
-  // game_card_data = card_data;
+  // game_card_data = shuffleArray(card_data);
+  game_card_data = card_data;
   cards.forEach((card, key) => {
     const open_img = card.childNodes.item(1);
     open_img.setAttribute('src', `./assets/img/open.png`);
@@ -85,9 +85,10 @@ const init = () => {
   console.log(game_card_data); // あとで消す。
 }
 let select_cards = null;
+let is_correct = false;
 const result = document.querySelector('.result');
 const openCard = (card) => {
-  if (!isSelect) {
+  if (!is_select) {
     card.addEventListener('transitionend', () => {
       // watari_voice.play();
       voices[game_card_data[card.dataset.cardnum]].play();
@@ -99,16 +100,14 @@ const openCard = (card) => {
     if (!select_cards) {
       select_cards = card;
     } else {
-      isSelect = true;
+      is_select = true;
       setTimeout(() => {
         if (game_card_data[select_cards.dataset.cardnum] == game_card_data[card.dataset.cardnum]) {
           card.childNodes.item(1).setAttribute('src', `./assets/img/correct.png`);
           select_cards.childNodes.item(1).setAttribute('src', `./assets/img/correct.png`);
           correct.classList.add('active', 'animate__animated');
           correct_sound.play();
-          if (correct_count == 8) {
-            console.log('all clear');
-          }
+          is_correct = true;
         } else {
           card.classList.remove('open');
           select_cards.classList.remove('open');
@@ -119,8 +118,15 @@ const openCard = (card) => {
         setTimeout(() => {
           correct.classList.remove('active', 'animate__animated');
           incorrect.classList.remove('active', 'animate__animated');
-          correct_count++;
-          isSelect = false;
+          if (is_correct) {
+            correct_count++;
+            console.log(correct_count)
+            if (correct_count == 8) {
+              console.log('all clear');
+            }
+          }
+          is_select = false;
+          is_correct = false;
         }, 3000)
       }, 3000)
     }
