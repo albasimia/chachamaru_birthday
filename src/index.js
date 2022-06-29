@@ -30,11 +30,19 @@ voices.taki = new Howl({
 });
 voices.makoto = new Howl({
   src: ['./assets/sound/makoto.mp3'],
-  volume: 0.8,
+  volume: 0.7,
 });
 voices.makiko = new Howl({
   src: ['./assets/sound/makiko.mp3'],
   volume: 1.0,
+});
+voices.tanikou = new Howl({
+  src: ['./assets/sound/tanikou.mp3'],
+  volume: 1.0,
+});
+voices.chana = new Howl({
+  src: ['./assets/sound/chana.mp3'],
+  volume: 0.7,
 });
 
 // SE
@@ -47,6 +55,7 @@ const incorrect_sound = new Howl({
   volume: 1,
 });
 
+let correct_count = 0;
 const shuffleArray = (array) => {
   const cloneArray = [...array]
 
@@ -72,18 +81,19 @@ const init = () => {
     const open_img = card.childNodes.item(1);
     open_img.setAttribute('src', `./assets/img/open.png`);
   });
-  console.log(game_card_data);
+  correct_count = 0;
+  console.log(game_card_data); // あとで消す。
 }
 let select_cards = null;
 const result = document.querySelector('.result');
 const openCard = (card) => {
-  card.addEventListener('transitionend', () => {
-    // watari_voice.play();
-    voices[game_card_data[card.dataset.cardnum]].play();
-  }, {
-    once: true,
-  })
   if (!isSelect) {
+    card.addEventListener('transitionend', () => {
+      // watari_voice.play();
+      voices[game_card_data[card.dataset.cardnum]].play();
+    }, {
+      once: true,
+    })
     if (!card.classList.contains('open'))
       card.classList.add('open');
     if (!select_cards) {
@@ -96,6 +106,9 @@ const openCard = (card) => {
           select_cards.childNodes.item(1).setAttribute('src', `./assets/img/correct.png`);
           correct.classList.add('active', 'animate__animated');
           correct_sound.play();
+          if (correct_count == 8) {
+            console.log('all clear');
+          }
         } else {
           card.classList.remove('open');
           select_cards.classList.remove('open');
@@ -103,11 +116,12 @@ const openCard = (card) => {
           incorrect_sound.play();
         }
         select_cards = null;
-        setTimeout(()=>{
+        setTimeout(() => {
           correct.classList.remove('active', 'animate__animated');
           incorrect.classList.remove('active', 'animate__animated');
+          correct_count++;
           isSelect = false;
-        },3000)
+        }, 3000)
       }, 3000)
     }
   }
