@@ -15,13 +15,16 @@ block content
       - for (var x = 0; x < 16; x++)
         li
           button.card(data-cardnum = x)
-            img.close(src="./assets/img/close_cha.jpg", alt="close", width="500", height="500")
-            img.open(src="./assets/img/open.png", alt="open", width="500", height="500")
+            img.close(src="./assets/img/close_cha.png", alt="close", width="500", height="500")
+            img.open(src=`./assets/img/mesumaru/${x}.png`, alt="open", width="500", height="500")
     .result
       .correct.shadow.animate__bounceInDown
         p.flash(data-text="セイカイ") セイカイ
       .incorrect.shadow.animate__bounceInDown
         p.flash(data-text="マチガイ") マチガイ
+    .allClear
+      a(href="./assets/img/gohoubi/gohoubi.png" target="_blank") ご褒美❤︎
+      button.replay REPLAY
 
 
 block script

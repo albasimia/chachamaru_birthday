@@ -42,7 +42,7 @@ body {
   }
   li {
     flex-basis: 25%;
-    padding: 0 4px 4px 0;
+    padding: 0 2px 2px 0;
   }
   .card {
     width: 100%;
@@ -129,6 +129,22 @@ body {
         background-color: rgba(#000, 0.7);
         filter: blur(10px);
       }
+    }
+  }
+  .allClear {
+    visibility: hidden;
+    text-align: center;
+    &.clear {
+      visibility: visible;
+    }
+    a {
+      color: rgb(242, 116, 247);
+      text-decoration: underline;
+      // text-align: center;
+    }
+    .replay {
+      margin: 20px auto;
+      display: block;
     }
   }
 }

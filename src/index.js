@@ -75,11 +75,12 @@ const cards = document.querySelectorAll('.card');
 const correct = document.querySelector('.correct');
 const incorrect = document.querySelector('.incorrect');
 const init = () => {
-  // game_card_data = shuffleArray(card_data);
-  game_card_data = card_data;
+  game_card_data = shuffleArray(card_data);
+  // game_card_data = card_data;
   cards.forEach((card, key) => {
+    card.classList.remove('open');
     const open_img = card.childNodes.item(1);
-    open_img.setAttribute('src', `./assets/img/open.png`);
+    open_img.setAttribute('src', `./assets/img/mesumaru/${key}.png`);
   });
   correct_count = 0;
   console.log(game_card_data); // あとで消す。
@@ -103,8 +104,8 @@ const openCard = (card) => {
       is_select = true;
       setTimeout(() => {
         if (game_card_data[select_cards.dataset.cardnum] == game_card_data[card.dataset.cardnum]) {
-          card.childNodes.item(1).setAttribute('src', `./assets/img/correct.png`);
-          select_cards.childNodes.item(1).setAttribute('src', `./assets/img/correct.png`);
+          card.childNodes.item(1).setAttribute('src', `./assets/img/correct/${game_card_data[select_cards.dataset.cardnum]}.png`);
+          select_cards.childNodes.item(1).setAttribute('src', `./assets/img/correct/${game_card_data[select_cards.dataset.cardnum]}.png`);
           correct.classList.add('active', 'animate__animated');
           correct_sound.play();
           is_correct = true;
@@ -122,7 +123,7 @@ const openCard = (card) => {
             correct_count++;
             console.log(correct_count)
             if (correct_count == 8) {
-              console.log('all clear');
+              allClear();
             }
           }
           is_select = false;
@@ -133,6 +134,15 @@ const openCard = (card) => {
   }
 }
 
+const allClear = () => {
+  cards.forEach(function (card, key) {
+    card.childNodes.item(0).setAttribute('src', `./assets/img/mesumaru/${key}.png`);
+    card.classList.remove('open')
+    console.log('all clear');
+    const all_clear_ele = document.querySelector('.allClear');
+    all_clear_ele.classList.add('clear');
+  })
+}
 
 cards.forEach(function (card) {
   card.addEventListener('click', function () {
@@ -140,3 +150,6 @@ cards.forEach(function (card) {
   });
 })
 init();
+
+const replay_btn = document.querySelector('.replay');
+replay_btn.addEventListener('click', init);
