@@ -8,6 +8,26 @@ html(lang='ja')
     title #{title}
     meta(name="description", content=description)
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no")
+    link(rel="shortcut icon", href='assets/img/favicon.ico', type="image/vnd.microsoft.icon")
+    link(rel="icon", href='assets/img/favicon.ico', type="image/vnd.microsoft.icon")
+
+    // ogp
+    meta(property="og:url", content=url)
+    meta(property="og:image", content=ogp_image_url)
+    meta(property="og:type", content="website")
+    meta(property="og:title", content=title)
+    meta(property="og:site_name", content=title)
+    meta(property="og:description", content=description)
+    meta(property="og:locale", content="ja_JP")
+
+    // twitter card
+    meta(property="twitter:card", content='summary_large_image')
+    meta(property="twitter:title", content=title)
+    meta(property="twitter:description", content=description)
+    meta(property="twitter:image", content=ogp_image_url)
+
+    // canonical url
+    link(rel="canonical" href=url)
     block head
 
   body(class=pageClass)

@@ -1,10 +1,12 @@
 extends ../layout/main
 
 block variables
-  - var title = 'Webpack + Pug';
-  - var description = 'Description for Webpack + Pug';
+  - var title = '茶々丸おねえさんボイス神経衰弱';
+  - var description = '8人のおねえさんボイスを聴き分けろ!! 全部正解すると"ご褒美❤︎"があるよ。';
   - var pageClass = 'index-page';
-
+  - var ogp_image_url = 'https://albasimia.github.io/chachamaru_birthday/assets/img/ogp.png';
+  - var url = 'https://albasimia.github.io/chachamaru_birthday/';
+  
 block content
   h1 茶々丸おねえさんボイス神経衰弱
   p.description 8人のおねえさんボイスを聴き分けろ!!
@@ -22,9 +24,8 @@ block content
         p.flash(data-text="セイカイ") セイカイ
       .incorrect.shadow.animate__bounceInDown
         p.flash(data-text="マチガイ") マチガイ
-    .allClear
-      a(href="./assets/img/gohoubi/gohoubi.png" target="_blank") ご褒美❤︎
-      button.replay REPLAY
-
+  .allClear
+    a(href="./assets/img/gohoubi/gohoubi.png" target="_blank") ご褒美❤︎
+    button.replay REPLAY
 
 block script
