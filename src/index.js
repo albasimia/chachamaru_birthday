@@ -55,6 +55,19 @@ const incorrect_sound = new Howl({
   volume: 1,
 });
 
+
+let game_card_data = []
+let correct_count = 0;
+let is_select = false
+let is_all_clear = false;
+let select_cards = null;
+let is_correct = false;
+const cards = document.querySelectorAll('.card');
+const correct = document.querySelector('.correct');
+const incorrect = document.querySelector('.incorrect');
+const result = document.querySelector('.result');
+const all_clear_ele = document.querySelector('.allClear');
+
 const shuffleArray = (array) => {
   const cloneArray = [...array]
   for (let i = cloneArray.length - 1; i >= 0; i--) {
@@ -67,16 +80,6 @@ const shuffleArray = (array) => {
   return cloneArray
 }
 
-let game_card_data = []
-let correct_count = 0;
-let is_select = false
-let is_all_clear = false;
-let select_cards = null;
-let is_correct = false;
-const cards = document.querySelectorAll('.card');
-const correct = document.querySelector('.correct');
-const incorrect = document.querySelector('.incorrect');
-const result = document.querySelector('.result');
 const init = () => {
   correct_count = 0;
   is_select = false
@@ -85,6 +88,7 @@ const init = () => {
   is_correct = false;
   game_card_data = shuffleArray(card_data);
   // game_card_data = card_data;
+  all_clear_ele.classList.remove('clear');
   cards.forEach((card, key) => {
     card.classList.remove('open');
     card.childNodes.item(0).setAttribute('src', `./assets/img/close_cha.png`)
@@ -141,7 +145,6 @@ const allClear = () => {
     card.childNodes.item(0).setAttribute('src', `./assets/img/mesumaru/${key}.png`);
     card.classList.remove('open')
   })
-  const all_clear_ele = document.querySelector('.allClear');
   all_clear_ele.classList.add('clear');
   is_all_clear = true;
 }
